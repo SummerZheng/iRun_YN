@@ -529,8 +529,8 @@ def createMiniWorld(miniGraph, startPt, endPt):
     minLat = min(startPt[1], endPt[1])-padding
     maxLat = max(startPt[1], endPt[1])+padding
     try:
-        #conn = psycopg2.connect("host = 'localhost' port = '5432' dbname='cambosroad' user = 'postgres' password='haha'")
-        conn = psycopg2.connect("dbname='CamBosRoad' user = 'postgres' host = 'localhost' password='p2k007mm'")
+        conn = psycopg2.connect("host = 'localhost' port = '5432' dbname='cambosroad' user = 'postgres' password='haha'")
+        conn = psycopg2.connect("dbname='CamBosRoad' user = 'postgres' host = 'localhost' password='*****'")
         cur = conn.cursor()
     except:
         print 'connection problem'     
