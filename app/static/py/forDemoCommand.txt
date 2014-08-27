@@ -1,0 +1,10 @@
+//Create a local map of MIT
+ogr2ogr -f "GeoJSON" MITmapV0.geojson CamBosRoad.geojson -clipsrc -71.1013, 42.3562, -71.0759, 42.3681
+
+//SQL selection,filter out train, bus line, road barrier, and parking lot etc 
+//export to CamBosRoadFT.geojson file
+ogr2ogr -f "GeoJSON" CamBosRoadFT.geojson PG:"host=localhost user=postgres password=******* dbname=cambosdata" -sql "select * from cambosroadFT" -t_srs "EPSG:4326"
+
+//export to geojson
+ogr2ogr -f "GeoJSON" MITmapV1.geojson CamBosRoadFT.geojson -clipsrc -71.1013, 42.3562, -71.0759, 42.3681
+
