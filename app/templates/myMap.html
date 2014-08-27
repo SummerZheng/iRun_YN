@@ -1,0 +1,16 @@
+{% extends 'basicTemplate.html' %}
+{% block content %}
+
+    <div id='map'></div>
+
+    <div id='menu' style = "background-color: #D8D8D8;">
+      Starting Address:&nbsp;&nbsp;&nbsp;<input type='searchBox' id = 'startPt' value = 'Kendal/MIT'><br>
+      Ending Address:&nbsp;&nbsp;&nbsp;&nbsp;<input type='searchBox' id = 'endPt' value = 'Central Square, Cambridge'><br>
+      RunningGoal(km): <input type = searchBox' id = 'runDist' value = 3><br>
+      <button onclick="PathSearch()">Submit</button>
+      <h4 id = "addmessage"></h4>	
+
+      <div id='loading'><span></span><img src='../static/img/loadingPaws.gif' alt='icon for loading'></div>
+    </div>
+
+{% endblock %}
