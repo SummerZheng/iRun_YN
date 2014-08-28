@@ -37,18 +37,23 @@ function FindAndRoute(startPt, endPt, runDis){
    $.getJSON('/findRoute', {'s': startPt,'e': endPt,'d':runDis}, function(findJSON){         
           // Maybe reset on bad query
           ShowLoading(false);
-          if (findJSON != {}) {             
-             console.log('after finding the path');
+          //console.log(findJSON);
+          //console.log(jQuery.isEmptyObject(findJSON));
+          if (!jQuery.isEmptyObject(findJSON)) {  
+          //if (findJSON!={}) {              
+             console.log('Path Found');
              message = findJSON['message'];
              $('#addmessage').html(message); 
              geoJSON.push(findJSON['path']);   
              map.featureLayer.setGeoJSON(geoJSON);        
-             latlngs = geoJSON[0]['geometry']['coordinates']
+             latlngs = geoJSON[0]['geometry']['coordinates'];
              var polyline = L.polyline(latlngs, LineStringOpt).addTo(map);          
              //Pan and zoom                        
              map.fitBounds(findJSON['bounds']);
           }else{
-             message = 'Path not found! Please check your address, and make sure they are within the blue boundary of Cambridge and Boston.' 
+             //console.log('Path NOT Found');
+             message = 'Path not found! Please check your address, and make sure they are within the blue boundary of Cambridge and Boston.'; 
+             //console.log(message);
              $('#addmessage').html(message);
           }
    });      
